@@ -1,13 +1,12 @@
-from lib import *
+from .utils import *
 import time
 from collections import deque
-import numpy as np
 
-def run():
+def run(as_example=False):
+  
+    #### SETUP ####
 
-    #### SETUP #####
-
-    grid = read_char_map(get_filename())
+    grid = read_char_map(get_filename("16", as_example))
     maze_maps = {"#": char_bool_map(grid, "#")}
     key_squares = {"S": find_char(grid, "S"), "E": find_char(grid, "E")}
     

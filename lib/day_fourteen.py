@@ -1,18 +1,18 @@
-from lib import *
+from .utils import *
 import time
 from operator import mul
 from functools import reduce
 
-def run():
-
-    #### SETUP #####
+def run(as_example=False):
+  
+    #### SETUP ####
     
     w, h = 101, 103
     t = 100
     
     grid = blank_map(w, h, 0)
 
-    robots_info = [(line.split()[0].strip("p="), line.split()[1].strip("v=")) for line in read_lines(get_filename())]
+    robots_info = [(line.split()[0].strip("p="), line.split()[1].strip("v=")) for line in read_lines(get_filename("14", as_example))]
     robots = [{"p": (int(info[0].split(",")[0]), int(info[0].split(",")[1])), "v": (int(info[1].split(",")[0]), int(info[1].split(",")[1]))} for info in robots_info]
     
     # rprint(robots)

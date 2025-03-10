@@ -1,17 +1,22 @@
-from lib import *
+from .utils import *
 import re
+import time
 
-def run():
+def run(as_example=False):
 
     #### SETUP #####
 
-    string = "".join(read_lines(get_filename()))
+    string = "".join(read_lines(get_filename("3", as_example)))
+
+    t0 = time.time()
 
     #### PART ONE #####
 
     mul_matches = find_operation_regex(string)
     mul_operations = [get_digits(match) for match in mul_matches]
     scores = [x*y for (x,y) in mul_operations]
+
+    t1 = time.time()
 
     #### PART TWO #####
 
@@ -30,12 +35,14 @@ def run():
     mul_operations = [get_digits(match) for match in mul_matches]
     updated_scores = [x*y for (x,y) in mul_operations]
 
+    t2 = time.time()
+
     #### ANSWERS #####
 
     part_one = sum(scores)
     part_two = sum(updated_scores)
 
-    log_answers(part_one, part_two)
+    log_answers(part_one, part_two, t0, t1, t2)
 
 
 #### FUNCTIONS #####

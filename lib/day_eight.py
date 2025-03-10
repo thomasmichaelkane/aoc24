@@ -1,12 +1,12 @@
-from lib import *
+from .utils import *
 import time
 
-def run():
-
-    #### SETUP #####
+def run(as_example=False):
+  
+    #### SETUP ####
 
     # read antenna map
-    antenna_map = read_lines(get_filename())
+    antenna_map = read_lines(get_filename("8", as_example))
     w, h = len(antenna_map[0]), len(antenna_map)
     
     # create separate boolean arrays for each frequency and add to dictionary

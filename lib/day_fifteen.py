@@ -1,12 +1,12 @@
-from lib import *
+from .utils import *
 import time
 from collections import deque
 
-def run():
+def run(as_example=False):
+  
+    #### SETUP ####
 
-    #### SETUP #####
-
-    [grid, instructions] = read_sections(get_filename())
+    [grid, instructions] = read_sections(get_filename("15", as_example))
     instructions = list("".join(instructions))
     
     rprint(grid)

@@ -1,11 +1,11 @@
-from lib import *
+from .utils import *
 import time
 
-def run():
+def run(as_example=False):
 
     #### SETUP #####
 
-    [rules_str, page_numbers_str] = read_sections(get_filename())
+    [rules_str, page_numbers_str] = read_sections(get_filename("5", as_example))
     
     rules = [[int(r) for r in string.split('|')] for string in rules_str]
     page_numbers = [[int(p) for p in string.split(',')] for string in page_numbers_str]

@@ -1,16 +1,16 @@
-from lib import *
+from .utils import *
 import time
 import itertools
 from rich.progress import track
 import math
 
-def run():
-
-    #### SETUP #####
+def run(as_example=False):
+  
+    #### SETUP ####
     
     weight_A, weight_B = 3, 1
 
-    games_info = [list(y) for x, y in itertools.groupby(read_lines(get_filename()), lambda z: z == "") if not x]
+    games_info = [list(y) for x, y in itertools.groupby(read_lines(get_filename("13", as_example)), lambda z: z == "") if not x]
     games = [{"A": {"Units": get_x_and_y(info[0], 2), "weight": weight_A}, 
               "B": {"Units": get_x_and_y(info[1], 2), "weight": weight_B}, 
               "Prize": get_x_and_y(info[2], 1)} for info in games_info]
@@ -29,10 +29,10 @@ def run():
     # x = x0 + k * (b / gcd), y = y0 - k * (a / gcd)
     
     solutions = []
-    for k in range(-num_solutions // 2, num_solutions // 2 + 1):
-        x = x0 + k * (b // gcd)
-        y = y0 - k * (a // gcd)
-        solutions.append((x, y))
+    # for k in range(-num_solutions // 2, num_solutions // 2 + 1):
+    #     x = x0 + k * (b // gcd)
+    #     y = y0 - k * (a // gcd)
+    #     solutions.append((x, y))
 
     return solutions
 

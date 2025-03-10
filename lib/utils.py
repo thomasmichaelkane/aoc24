@@ -1,16 +1,15 @@
-import sys
 import os
-from rich import print as rprint
 import itertools
 import numpy as np
 import math
 import cv2
+from rich import print as rprint
 
-def get_filename():
+def get_filename(day, as_example):
     
     try:
         
-        filename = sys.argv[1]
+        filename = f"data/{day}_example.txt" if as_example else f"data/{day}_input.txt"
         
         os.path.isfile(filename)
         
@@ -21,7 +20,7 @@ def get_filename():
         
         print(err)
     
-    return sys.argv[1]
+    return filename
 
 def read_lines(filename):
     
@@ -61,8 +60,9 @@ def log_answers(part_one, part_two, t0, t1, t2):
     
     p1_time = round(t1-t0, 5)
     p2_time = round(t2-t1, 5)
-    rprint("Part one: {} ({})".format(part_one, p1_time))
-    rprint("Part two: {} ({})".format(part_two, p2_time))
+    
+    rprint("Part one: {} ({}) | Part two: {} ({})"
+           .format(part_one, p1_time, part_two, p2_time))
     
 def get_2D_surrounding_coords():
     
@@ -280,3 +280,4 @@ def tab_print(grid, bool_grid, sec_bool=None):
             else:
                 rprint(item, end='\t')
         rprint('\n')
+        

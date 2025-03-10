@@ -1,11 +1,11 @@
-from lib import *
+from .utils import *
 import time
 
-def run():
+def run(as_example=False):
+  
+    #### SETUP ####
 
-    #### SETUP #####
-
-    sections = read_sections(get_filename())
+    sections = read_sections(get_filename("19", as_example))
     towels = [x.strip() for x in sections[0][0].split(",")]
     arrangements = sections[1]
     towels.sort(reverse=True), arrangements.sort(reverse=True)

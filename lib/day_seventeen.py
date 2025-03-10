@@ -1,13 +1,13 @@
-from lib import *
+from .utils import *
 import time
 from rich.progress import track
 import matplotlib.pyplot as plt
 
-def run():
+def run(as_example=False):
+  
+    #### SETUP ####
 
-    #### SETUP #####
-
-    sections = read_sections(get_filename())
+    sections = read_sections(get_filename("17", as_example))
     
     registers = {"A": get_register_value(sections[0][0]),
                  "B": get_register_value(sections[0][1]),

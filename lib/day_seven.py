@@ -1,13 +1,13 @@
-from lib import *
+from .utils import *
 import time
 import itertools
 from rich.progress import track
 
-def run():
+def run(as_example=False):
+  
+    #### SETUP ####
 
-    #### SETUP #####
-
-    sections = [line.split() for line in read_lines(get_filename())]
+    sections = [line.split() for line in read_lines(get_filename("7", as_example))]
     targets = [int(section.pop(0).strip(":")) for section in sections]
     num_list = [[int(x) for x in nums] for nums in sections]
     

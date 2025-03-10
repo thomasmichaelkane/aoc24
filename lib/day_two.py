@@ -1,16 +1,21 @@
-from lib import *
+from .utils import *
+import time
 
-def run():
+def run(as_example=False):
 
     #### SETUP #####
 
-    lines = read_lines(get_filename())
+    lines = read_lines(get_filename("2", as_example))
     reports = [[int(x) for x in line.split()] for line in lines]
+
+    t0 = time.time()
 
     #### PART ONE #####
 
     report_differences = [[report[i] - report[i+1] for i in range(len(report) - 1)] for report in reports]
     safety_checks = [check_safety(report) for report in report_differences]
+
+    t1 = time.time()
 
     #### PART TWO #####
 
@@ -24,12 +29,14 @@ def run():
         else:
             dampened_checks.append(check_dampened_safety(reports[i]))
             
+    t2 = time.time()
+            
     #### ANSWERS #####
 
     part_one = safety_checks.count(True)
     part_two = dampened_checks.count(True)
 
-    log_answers(part_one, part_two)
+    log_answers(part_one, part_two, t0, t1, t2)
     
 #### FUNCTIONS #####
 

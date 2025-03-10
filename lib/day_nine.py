@@ -1,13 +1,13 @@
-from lib import *
+from .utils import *
 import time
 from collections import Counter
 from rich.progress import track
 
-def run():
+def run(as_example=False):
+  
+    #### SETUP ####
 
-    #### SETUP #####
-
-    disk = [int(x) for x in read_lines(get_filename())[0]]
+    disk = [int(x) for x in read_lines(get_filename("9", as_example))[0]]
     
     disk_data, disk_space = disk[::2], disk[1::2]
     

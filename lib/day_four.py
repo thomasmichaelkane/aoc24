@@ -1,11 +1,12 @@
-from lib import *
+from .utils import *
 import numpy as np
+import time
 
-def run():
+def run(as_example=False):
 
     #### SETUP #####
-
-    lines = read_lines(get_filename())
+    
+    lines = read_lines(get_filename("4", as_example))
     matrix = [[c for c in line.strip('\n')] for line in lines]
 
     padding_amount = 4
@@ -15,6 +16,8 @@ def run():
     padded_matrix = padding_rows + [padding + row + padding for row in matrix] + padding_rows
 
     w, h = len(padded_matrix[0]), len(padded_matrix)
+
+    t0 = time.time()
 
     #### PART ONE #####
 
@@ -29,6 +32,8 @@ def run():
                 if n_xmas != 0:
                     xmas_counts[i, j] = n_xmas
 
+    t1 = time.time()
+
     #### PART TWO #####
 
     crossmas_counts = np.zeros([w, h])
@@ -41,13 +46,15 @@ def run():
 
                 if n_crossmas != 0:
                     crossmas_counts[i, j] = n_crossmas
-                    
+    
+    t2 = time.time()
+    
     #### ANSWERS #####
 
     part_one = int(xmas_counts.sum())
     part_two = int(crossmas_counts.sum())
     
-    log_answers(part_one, part_two)
+    log_answers(part_one, part_two, t0, t1, t2)
 
 #### FUNCTIONS #####
 

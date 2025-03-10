@@ -1,13 +1,15 @@
-from lib import *
+from .utils import *
 import time
 import matplotlib.pyplot as plt
 from collections import Counter
 
-def run():
+def run(as_example=False):
+  
+    #### SETUP ####
 
-    #### SETUP #####
+    lines = read_lines(get_filename("N", as_example))
 
-    stones = [int(x) for x in read_lines(get_filename())[0].split()]
+    stones = [int(x) for x in read_lines(get_filename("11", as_example))[0].split()]
     
     # stones = [0]
     

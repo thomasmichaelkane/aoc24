@@ -1,12 +1,12 @@
-from lib import *
+from .utils import *
 import time
 from collections import deque
 
-def run():
+def run(as_example=False):
+  
+    #### SETUP ####
 
-    #### SETUP #####
-
-    char_map = read_char_map(get_filename(), to_int=True)
+    char_map = read_char_map(get_filename("10", as_example), to_int=True)
     w, h = len(char_map[0]), len(char_map)
     
     trailhead_map = [[not c for c in row] for row in char_map]

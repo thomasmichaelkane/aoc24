@@ -1,12 +1,12 @@
-from lib import *
+from .utils import *
 import time
 from rich.progress import track
 
-def run():
+def run(as_example=False):
+  
+    #### SETUP ####
 
-    #### SETUP #####
-
-    char_map = read_char_map(get_filename(), pad_char = "#")
+    char_map = read_char_map(get_filename("12", as_example), pad_char = "#")
     
     w, h = len(char_map[0]), len(char_map)
     

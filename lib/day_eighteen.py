@@ -1,14 +1,14 @@
-from lib import *
+from .utils import *
 import time
 from collections import namedtuple, deque
 
-def run():
-
-    #### SETUP #####
+def run(as_example=False):
+  
+    #### SETUP ####
     
     Point = namedtuple('Point', ['x', 'y'])
 
-    bytes = [Point(x=int(line.split(",")[0]), y=int(line.split(",")[1])) for line in read_lines(get_filename())]
+    bytes = [Point(x=int(line.split(",")[0]), y=int(line.split(",")[1])) for line in read_lines(get_filename("18", as_example))]
     
     w = h = 71
     # w = h = 7

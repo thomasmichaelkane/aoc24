@@ -1,14 +1,14 @@
-from lib import *
+from .utils import *
 import time
 from collections import namedtuple, deque
 
-def run():
-
-    #### SETUP #####
+def run(as_example=False):
+  
+    #### SETUP ####
     
     Point = namedtuple('Point', ['x', 'y'])
 
-    grid = read_char_map(get_filename())
+    grid = read_char_map(get_filename("20", as_example))
     maze_grids = {"#": char_bool_map(grid, "#")}  
     (xe, ye), (xs, ys) = find_char(grid, "E"), find_char(grid, "S")
     key_squares = {"S": Point(xs, ys), "E": Point(xe, ye)}  
